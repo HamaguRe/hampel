@@ -1,6 +1,6 @@
 [package]
 name = "hampel"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["HamaguRe <hamagure@space-denpa.jp>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -10,5 +10,6 @@ description = "Sequential outlier detection and removal using Hampel identifiers
 keywords = ["mathematics", "science"]
 readme = "README.md"
 
-[dependencies]
-num-traits = "0.2"
+[dependencies.num-traits]
+version = "0.2"
+default-features = false

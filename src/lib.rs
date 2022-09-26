@@ -1,6 +1,26 @@
 //! Sequential outlier detection and removal using Hampel identifiers.
 //! 
 //! It supports `f32` and `f64`.
+//! 
+//! # Example
+//! 
+//! ```rust
+//! use hampel::Window;
+//! 
+//! fn main() {
+//!     // Window size: 5 (>= 3)
+//!     // Initialization value of window: 0.0
+//!     // Threshold: Median of the window ±3σ.
+//!     let mut filter = Window::<f64, 5>::new(0.0, 3.0);
+//!     
+//!     let input_vals = [0.0; 100];  // <- Containing outliers
+//!     let mut filtered_vals = [0.0; 100];
+//!     for (i, val) in input_vals.iter().enumerate() {
+//!         filtered_vals[i] = filter.update(*val);
+//!     }
+//!     // filtered_vals <-- Outliers have been removed
+//! }
+//! ```
 
 #![no_std]
 
@@ -9,20 +29,6 @@ use num_traits::{cast, float::FloatCore};
 
 
 /// Window of Hampel filter
-/// 
-/// # Example
-/// 
-/// ```rust
-/// fn main() {
-///     // Window size: 5 (>= 3)
-///     // Initialization value of window: 0.0
-///     // Threshold: Median of the window ±3σ.
-///     let mut window = hampel::Window::<f64, 5>::new(0.0, 3.0);
-///     
-///     # let input = 0.0;
-///     let filtered = window.update(input);
-/// }
-/// ```
 pub struct Window<T: FloatCore, const WINDOW_SIZE: usize> {
     window: [T; WINDOW_SIZE],
     working_array: [T; WINDOW_SIZE],

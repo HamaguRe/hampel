@@ -15,14 +15,23 @@ hampel = "0.1"
 
 ## Example
 
+`src/main.rs`:
+
 ```rust
+use hampel::Window;
+
 fn main() {
     // Window size: 5 (>= 3)
     // Initialization value of window: 0.0
     // Threshold: Median of the window ±3σ.
-    let mut window = hampel::Window::<f64, 5>::new(0.0, 3.0);
+    let mut filter = Window::<f64, 5>::new(0.0, 3.0);
     
-    let filtered = window.update(input);
+    let input_vals = [0.0; 100];  // <- Containing outliers
+    let mut filtered_vals = [0.0; 100];
+    for (i, val) in input_vals.iter().enumerate() {
+        filtered_vals[i] = filter.update(*val);
+    }
+    // filtered_vals <-- Outliers have been removed
 }
 ```
 
