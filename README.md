@@ -10,12 +10,16 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-hampel = "0.1"
+hampel = "0.2"
+#features = ["extrapolation"]  <-- At your option
 ```
 
-## Example
+### `extrapolation` feature
 
-`src/main.rs`:
+When this feature is enabled, linear extrapolated values are returned when outliers are detected. 
+If not enabled, the median value of the window is returned.
+
+## Example
 
 ```rust
 use hampel::Window;
@@ -35,7 +39,11 @@ fn main() {
 }
 ```
 
-![example](./example.png)
+## Sample images
+
+![sample1](./images/median_1.png)
+
+![sample2](./images/extrapolation_1.png)
 
 ## License
 
