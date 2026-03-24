@@ -9,12 +9,13 @@
 //! 
 //! fn main() {
 //!     // Window size: 5 (>= 3)
-//!     // Initialization value of window: 0.0
-//!     // Threshold: Median of the window ±3σ.
+//!     // Init value  : 0.0
+//!     // Threshold k : 3.0  →  flag if |x − median| > 3 × σ̂
 //!     let mut filter = Window::<f64, 5>::new(0.0, 3.0);
 //!     
-//!     let input_vals = [0.0; 100];  // <- Containing outliers
+//!     let input_vals = [0.0; 100];   // ← replace with your data (may contain outliers)
 //!     let mut filtered_vals = [0.0; 100];
+//! 
 //!     for (i, val) in input_vals.iter().enumerate() {
 //!         filtered_vals[i] = filter.update(*val);
 //!     }

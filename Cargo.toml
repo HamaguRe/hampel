@@ -1,15 +1,15 @@
 [package]
 name = "hampel"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["HamaguRe <hamagure@space-denpa.jp>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/HamaguRe/hampel.git"
-homepage = "https://github.com/HamaguRe/hampel.git"
 description = "Sequential outlier detection and removal using Hampel identifiers"
-keywords = ["mathematics", "science"]
+categories = ["no-std", "algorithms", "science"]
+keywords = ["hampel", "outlier", "filter", "signal-processing", "no-std"]
 readme = "README.md"
-exclude = [".gitignore", "./images"]
+exclude = [".gitignore", "images/"]
 
 [features]
 extrapolation = []
